@@ -6,7 +6,7 @@ This repository tracks my learning progress in Laravel + Vue.js fullstack develo
 
 | Day    | Focus                           | Completed |
 | ------ | ------------------------------- | --------- |
-| Day 01 | JS ES6 + Laravel Routes         | [ ]       |
+| Day 01 | JS ES6 + Laravel Routes         | [x]       |
 | Day 02 | JS Arrays + Laravel Blade       | [ ]       |
 | Day 03 | DOM + Laravel Forms             | [ ]       |
 | Day 04 | Async JS + Laravel API          | [ ]       |
