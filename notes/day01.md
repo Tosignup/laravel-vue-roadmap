@@ -13,7 +13,7 @@
 
 ## Things I Learned
 
-- See [day01/REAMDE.md](day01/README.md)
+- See [./day01/REAMDE.md](day01/README.md)
 
 ## Challenges I Faced
 
