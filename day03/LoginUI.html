@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 03 | JS DOM</title>
+    <style>
+        form {
+            width: 300px;
+            margin: 50px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        div {
+            width: 100%;
+        }
+        input {
+            width: 100%;
+            margin-bottom: 10px;
+            padding: 8px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <form id="loginForm">
+        <h2>Login</h2>
+        <div>
+            <label for="email">Email:</label>
+            <input type="email" name="email" id="email" required />
+        </div>
+        <div>
+            <label for="password">Password:</label>
+            <input type="password" name="password" id="password" required />
+        </div>
+        <button type="submit">Login</button>
+        <p id="loginStatus"></p>
+    </form>
+</body>
+<script>
+    const form = document.getElementById('loginForm');
+    const emailInput = document.getElementById('email');
+    const passwordInput = document.getElementById('password');
+    const status = document.getElementById('loginStatus');
+    
+    form.addEventListener('submit', function(event){
+        event.preventDefault();
+
+        const email = emailInput.value.trim();
+        const password = passwordInput.value.trim();
+
+        if(email === 'user@example.com' && password === 'pass123.')
+        {
+            status.textContent = 'Login Successfully!';
+            status.style.color = 'green';
+        } else {
+            status.textContent = 'Invalid Credentials';
+            status.style.color = 'red';
+        }
+
+        form.reset();
+    });
+</script>
+</html>
