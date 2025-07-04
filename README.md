@@ -14,7 +14,7 @@ This repository tracks my learning progress in Laravel + Vue.js fullstack develo
 | Day 06 | Intro to Vue with TypeScript     | [x]       |
 | Day 07 | Props & Refs in TypeScript       | [x]       |
 | Day 08 | Two-Way Binding + Events         | [x]       |
-| Day 09 | Composition API & Type Safety    | [ ]       |
+| Day 09 | Composition API & Type Safety    | [x]       |
 | Day 10 | Consuming API with Axios + Types | [ ]       |
 | Day 11 | Project Setup                    | [ ]       |
 | Day 12 | CRUD Integration                 | [ ]       |
