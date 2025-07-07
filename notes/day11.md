@@ -2,31 +2,36 @@
 
 ## ✅ What I Did
 
-- Short summary of tasks completed
-- Key files changed or created
+- See [day11/README.md](../day11/README.md)
 
 ## 🧩 Commands Used
 
-- `php artisan make:controller`
+- `php artisan make:model -mrc`
+  > -m = for migrations
+  > -r = resource controller (CRUD-ready)
+  > -c = controller
+- `php artisan migrate`
+- `php artisan install:api`
 - `npm install axios`
-- Example curl request to test API
 
 ## 📝 Key Learnings
 
-- What did you learn about Vue + TS + API calls?
-- Any syntax that was new or tricky?
+- Defining api routes using apiResource
+- Migration definition
+- Vue installation
+- Laravel installation
 
 ## ⚡️ Gotchas / Debugging
 
-- Problems you hit and how you fixed them
-- Error messages you don’t want to forget
+- Missing `api.php` file in routes directory in Laravel 11 and above
+  > run `php artisan install:api` to restore
 
 ## 📚 Resources / Links
 
-- Docs you checked
-- Official Laravel or Vue docs used
+- Missing [api.php](https://www.techlup.co.ke/blog/understanding-laravel-11s-new-application-structure-missing-apiphp-routes)
 
 ## 🧪 Next Steps / To Do
 
-- What needs improvement?
-- What do you want to revise tomorrow?
+- Implement `BookController` Methods
+- Build `Booklist.vue` and `BookForm.vue`
+- Connect frontend to backend using Axios
