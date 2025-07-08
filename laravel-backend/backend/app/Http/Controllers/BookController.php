@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\BookResource;
 use App\Models\Book;
 use Illuminate\Http\Request;
+use Log;
 
 class BookController extends Controller
 {
@@ -12,7 +14,7 @@ class BookController extends Controller
      */
     public function index()
     {
-        //
+        return BookResource::collection(Book::latest()->get());
     }
 
     /**
@@ -20,7 +22,6 @@ class BookController extends Controller
      */
     public function create()
     {
-        //
     }
 
     /**
@@ -28,7 +29,20 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try {
+            $validated = $request->validate([
+                'title' => 'required|max:255',
+                'author' => 'required|max:255',
+                'genre' => 'nullable|max:255',
+            ]);
+
+            $book = Book::create($validated);
+
+            // return response()->json(['message' => 'Book stored!'], 201);
+            return new BookResource($book);
+        } catch (\Exception $e) {
+            Log::error('Error storing book: ', [$e->getMessage()]);
+        }
     }
 
     /**
@@ -36,7 +50,7 @@ class BookController extends Controller
      */
     public function show(Book $book)
     {
-        //
+        return new BookResource($book);
     }
 
     /**
@@ -52,7 +66,21 @@ class BookController extends Controller
      */
     public function update(Request $request, Book $book)
     {
-        //
+        try {
+            $validated = $request->validate([
+                'title' => 'required|max:255',
+                'author' => 'required|max:255',
+                'genre' => 'nullable|max:255',
+            ]);
+
+            $book->update($validated);
+
+            return new BookResource($book);
+            // return response()->json(['message' => 'Book updated!'], 201);
+        } catch (\Exception $e) {
+            Log::error('Error updating book: ', [$e->getMessage()]);
+        }
+
     }
 
     /**
@@ -60,6 +88,8 @@ class BookController extends Controller
      */
     public function destroy(Book $book)
     {
-        //
+        $book->delete();
+
+        return response()->noContent();
     }
 }

@@ -15,9 +15,9 @@ This repository tracks my learning progress in Laravel + Vue.js fullstack develo
 | Day 07 | Props & Refs in TypeScript       | [x]       |
 | Day 08 | Two-Way Binding + Events         | [x]       |
 | Day 09 | Composition API & Type Safety    | [x]       |
-| Day 10 | Consuming API with Axios + Types | [ ]       |
-| Day 11 | Project Setup                    | [ ]       |
-| Day 12 | CRUD Integration                 | [ ]       |
+| Day 10 | Consuming API with Axios + Types | [x]       |
+| Day 11 | Project Setup                    | [x]       |
+| Day 12 | CRUD Integration                 | [x]       |
 | Day 13 | CRUD Update                      | [ ]       |
 | Day 14 | Auth with Laravel Sanctum        | [ ]       |
 | Day 15 | State Management (Pinia + TS)    | [ ]       |

@@ -2,31 +2,28 @@
 
 ## ✅ What I Did
 
-- Short summary of tasks completed
-- Key files changed or created
+- See [day12/README.md](../day12/README.md)
 
 ## 🧩 Commands Used
 
-- `php artisan make:controller`
-- `npm install axios`
-- Example curl request to test API
+- `php artisan tinker`
+  > use App\Models\Book;
+  > $book = Book::find(1);
 
 ## 📝 Key Learnings
 
-- What did you learn about Vue + TS + API calls?
-- Any syntax that was new or tricky?
+- Defining Laravel CRUD operation in controller
+- Usage of axios.create()
 
 ## ⚡️ Gotchas / Debugging
 
-- Problems you hit and how you fixed them
-- Error messages you don’t want to forget
+- Laravel API Form Validation
+- Use Postman to test APIs
 
 ## 📚 Resources / Links
 
-- Docs you checked
-- Official Laravel or Vue docs used
+- None
 
 ## 🧪 Next Steps / To Do
 
-- What needs improvement?
-- What do you want to revise tomorrow?
+- Since CRUD operation is done, might advance study either Vue Router or Pinia

@@ -1,7 +1,8 @@
 <script setup lang="ts">
-  import AxiosTesting from '@/components/AxiosTesting.vue';
+  import BookForm from './pages/BookForm.vue';
+  import BookList from './pages/BookList.vue';
 </script>
 
 <template>
-  <AxiosTesting />
+  <BookList />
 </template>
