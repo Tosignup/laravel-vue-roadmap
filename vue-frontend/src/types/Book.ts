@@ -7,3 +7,7 @@ export interface Book {
   cover_image?: string;
   created_at?: string;
 }
+
+export interface BookResponse {
+  data: Book;
+}
