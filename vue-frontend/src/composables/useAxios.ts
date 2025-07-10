@@ -2,8 +2,9 @@ import axios from "axios";
 import { ref, onMounted } from "vue";
 
 export const api = axios.create({
-  baseURL: 'http://localhost:8000/api',
-  withCredentials: true
+  baseURL: 'http://localhost:8000',
+  withCredentials: true,
+  withXSRFToken: true,
 });
 interface Post{
   id: number;
