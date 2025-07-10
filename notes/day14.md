@@ -2,19 +2,17 @@
 
 ## ✅ What I Did
 
-- Short summary of tasks completed
-- Key files changed or created
+- Define api routes for Sanctum authentication
+- Define login and logout function inside AuthController
 
 ## 🧩 Commands Used
 
-- `php artisan make:controller`
-- `npm install axios`
-- Example curl request to test API
+- `composer require laravel/sanctum`
+- `php artisan vendor:publish --provider="Laravel\Sanctum\SanctumServiceProvider"
 
 ## 📝 Key Learnings
 
-- What did you learn about Vue + TS + API calls?
-- Any syntax that was new or tricky?
+-
 
 ## ⚡️ Gotchas / Debugging
 
