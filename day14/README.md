@@ -99,3 +99,7 @@
      return { user, login, logout };
    });
    ```
+
+3. Create `LoginForm.vue` make a form that calls `login()` from `authStore` using `v-model` for fields.
+   - See [`LoginForm.vue`](../vue-frontend/src/pages/LoginForm.vue)
+4. Create `RegisterForm.vue` make a form class `register()` from `authStore`.

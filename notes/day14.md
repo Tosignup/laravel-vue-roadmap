@@ -12,19 +12,17 @@
 
 ## 📝 Key Learnings
 
--
+- sanctum configurations
 
 ## ⚡️ Gotchas / Debugging
 
-- Problems you hit and how you fixed them
-- Error messages you don’t want to forget
+- use [Postman](postman.com) for testing APIs
 
 ## 📚 Resources / Links
 
-- Docs you checked
-- Official Laravel or Vue docs used
+- [Sanctum](https://laravel.com/docs/12.x/sanctum#main-content) for sanctum docs
 
 ## 🧪 Next Steps / To Do
 
-- What needs improvement?
-- What do you want to revise tomorrow?
+- Proceed with State Management (Pinia + TS)
+- Test Auth routes

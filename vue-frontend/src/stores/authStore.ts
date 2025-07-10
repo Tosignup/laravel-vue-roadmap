@@ -16,5 +16,12 @@ export const useAuthStore = defineStore('auth', () => {
     user.value = null;
   }
 
-  return { user, login, logout};
+  const register = async (
+    formData: {name: string, email: string, password: string, password_confirmation: string}) => {
+    await api.get('/sanctum/csrf-cookie');
+    const res = await api.post('/api/register', formData);
+    user.value = res.data
+  }
+
+  return { user, login, logout, register};
 });
