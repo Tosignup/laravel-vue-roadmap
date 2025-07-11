@@ -20,7 +20,7 @@ This repository tracks my learning progress in Laravel + Vue.js fullstack develo
 | Day 12 | CRUD Integration                 | [x]       |
 | Day 13 | CRUD Update                      | [x]       |
 | Day 14 | Auth with Laravel Sanctum        | [x]       |
-| Day 15 | State Management (Pinia + TS)    | [ ]       |
+| Day 15 | State Management (Pinia + TS)    | [x]       |
 | Day 16 | Vue Router + Guards              | [ ]       |
 | Day 17 | Tailwind CSS                     | [ ]       |
 | Day 18 | Filters & Pagination             | [ ]       |
