@@ -5,9 +5,19 @@ import { api } from "@/composables/useAxios";
 export const useAuthStore = defineStore('auth', () => {
   const user = ref(null);
 
-  const login = async (email: string, password: string) => {
+  const fetchUser = async() => {
+    try {
+      const res = await api.get('/api/user');
+      user.value = res.data;
+
+    } catch {
+      user.value = null;
+    }
+  }
+
+  const login = async (formData: {email: string, password: string}) => {
     await api.get('/sanctum/csrf-cookie');
-    const res = await api.post('/api/login', {email, password});
+    const res = await api.post('/api/login', formData);
     user.value = res.data;
   }
 
@@ -23,5 +33,5 @@ export const useAuthStore = defineStore('auth', () => {
     user.value = res.data
   }
 
-  return { user, login, logout, register};
+  return { user, fetchUser, login, logout, register};
 });

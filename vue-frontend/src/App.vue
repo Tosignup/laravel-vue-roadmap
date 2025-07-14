@@ -1,9 +1,9 @@
 <script setup lang="ts">
-  import BookForm from './pages/BookForm.vue';
-  import BookList from './pages/BookList.vue';
   import { RouterView } from 'vue-router';
 </script>
 
 <template>
+  <main class="bg-white">
   <RouterView />
+  </main>
 </template>

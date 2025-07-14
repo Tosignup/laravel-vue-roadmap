@@ -2,31 +2,29 @@
 
 ## ✅ What I Did
 
-- Short summary of tasks completed
-- Key files changed or created
+- Defined a Frontend guard using `meta`
+- Defined a middleware for api routes when using sanctum
 
 ## 🧩 Commands Used
 
-- `php artisan make:controller`
-- `npm install axios`
-- Example curl request to test API
+- `npm run dev`
+- `php artisan serve`
 
 ## 📝 Key Learnings
 
-- What did you learn about Vue + TS + API calls?
-- Any syntax that was new or tricky?
+- adding statefulApi for middlewares
+- defining guards using `meta`
 
 ## ⚡️ Gotchas / Debugging
 
-- Problems you hit and how you fixed them
-- Error messages you don’t want to forget
+- when passing credentials to backend(laravel) avoid using array types
 
 ## 📚 Resources / Links
 
-- Docs you checked
-- Official Laravel or Vue docs used
+- always read documentations
+- [laravel](https://laravel.com/docs/12.x)
+- [vue](https://vuejs.org/guide/introduction.html)
 
 ## 🧪 Next Steps / To Do
 
-- What needs improvement?
-- What do you want to revise tomorrow?
+- proceed with Tailwindcss to improve UI
