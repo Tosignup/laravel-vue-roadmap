@@ -8,7 +8,7 @@ onMounted(fetchBooks);
 </script>
 
 <template>
-  <div class="grid gap-4">
+  <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
     <router-link to="/books/create" class="btn">Add Book</router-link>
     <div v-for="book in books" :key="book.id" class="p-4 border rounded">
       <h2 class="font-bold"> {{ book.title }}</h2>
