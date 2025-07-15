@@ -2,31 +2,25 @@
 
 ## ✅ What I Did
 
-- Short summary of tasks completed
-- Key files changed or created
+- Improved UI using Tailwindcss
 
 ## 🧩 Commands Used
 
-- `php artisan make:controller`
-- `npm install axios`
-- Example curl request to test API
+- `npm install -D tailwindcss postcss autoprefixer`
+- `npx tailwindcss init -p`
 
 ## 📝 Key Learnings
 
-- What did you learn about Vue + TS + API calls?
-- Any syntax that was new or tricky?
+- You can implement tailwindcss either in `index.html` or by importing it in `main.ts`
 
 ## ⚡️ Gotchas / Debugging
 
-- Problems you hit and how you fixed them
-- Error messages you don’t want to forget
+- None
 
 ## 📚 Resources / Links
 
-- Docs you checked
-- Official Laravel or Vue docs used
+- [Tailwindcss](https://tailwindcss.com/docs/installation/using-vite)
 
 ## 🧪 Next Steps / To Do
 
-- What needs improvement?
-- What do you want to revise tomorrow?
+- Proceed with Filters, Search, Paginations
