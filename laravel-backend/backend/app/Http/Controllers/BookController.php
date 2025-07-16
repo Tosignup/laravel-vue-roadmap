@@ -12,9 +12,19 @@ class BookController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        return BookResource::collection(Book::latest()->get());
+        $query = Book::query();
+
+        if ($search = $request->input('search')) {
+            $query->where('title', 'like', "%{$search}%")
+                ->orWhere('author', 'like', "%{$search}%");
+        }
+        Log::info("Searching for: " . $search);
+        $books = $query->paginate(2);
+
+        // return response()->json($books);
+        return BookResource::collection($books);
     }
 
     /**
