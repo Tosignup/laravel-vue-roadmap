@@ -1,16 +1,21 @@
-import {defineStore} from 'pinia';
 import { ref } from 'vue';
-import type { Book } from '@/types/Book';
 import { api } from '@/composables/useAxios';
+import type { Book } from '@/types/Book';
+import { defineStore } from 'pinia';
 
 export const useBookStore = defineStore('book', () => {
   const books = ref<Book[]>([]);
+  const meta = ref<any>(null);
   const loading = ref<boolean>(false);
 
-  const fetchBooks = async () => {
+  const fetchBooks = async (search = '', page = 1) => {
     loading.value = true;
-    const res = await api.get('/api/books');
+    const res = await api.get('/api/books', {
+      params: { search, page},
+    });
+    console.log(res.data);
     books.value = res.data.data;
+    meta.value = res.data.meta;
     loading.value = false;
   };
 
@@ -29,6 +34,6 @@ export const useBookStore = defineStore('book', () => {
     await fetchBooks();
   }
 
-  return { books, loading, fetchBooks, addBook, updateBook, deleteBook };
+  return { books, meta, loading, fetchBooks, addBook, updateBook, deleteBook };
 
 })

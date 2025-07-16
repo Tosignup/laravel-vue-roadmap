@@ -2,31 +2,33 @@
 
 ## ✅ What I Did
 
-- Short summary of tasks completed
-- Key files changed or created
+- Added Pagination and Search functionality
+- In Laravel: updated the index with search query and paginate
+- In Vue: updated the booklist with search and paginate buttons, also updated the BookStore for params
+- Added DebouncedRefs composable
 
 ## 🧩 Commands Used
 
-- `php artisan make:controller`
-- `npm install axios`
-- Example curl request to test API
+- `php artisan serve`
+- `npm run dev`
 
 ## 📝 Key Learnings
 
-- What did you learn about Vue + TS + API calls?
-- Any syntax that was new or tricky?
+- laravel query
+- vue debounced
 
 ## ⚡️ Gotchas / Debugging
 
-- Problems you hit and how you fixed them
-- Error messages you don’t want to forget
+- Had problem in search functionality it turns out it is just a missing `$` sign inside query for `$search` variable
+- pagination problem: since laravel takes to params for search and paginate it takes the paginate value to search input
 
 ## 📚 Resources / Links
 
-- Docs you checked
-- Official Laravel or Vue docs used
+- Always read documentations
+- [laravel](https://laravel.com/docs/12.x)
+- [vue](https://vuejs.org/guide/introduction.html)
 
 ## 🧪 Next Steps / To Do
 
-- What needs improvement?
-- What do you want to revise tomorrow?
+- Proceed with Sorting + Column Toggles, UI Enhancements
+- Add filter functionality when free time
