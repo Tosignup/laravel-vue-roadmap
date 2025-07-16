@@ -36,19 +36,21 @@ const handleSubmit = async() => {
 </script>
 
 <template>
-  <form @submit.prevent="handleSubmit" class="space-y-4">
-    <input v-model="localBook.title" placeholder="Title" class="input" required/>
-    <input v-model="localBook.author" placeholder="Author" class="input" required/>
-    <input v-model="localBook.genre" placeholder="Genre" class="input" />
-    <select v-model="localBook.status" class="input">
-      <option>To Read</option>
-      <option>Reading</option>
-      <option>Read</option>
-    </select>
+  <div class="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
 
-    <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">{{ localBook.id ? 'Update' : 'Create' }} Book</button>
-  </form>
+    <form @submit.prevent="handleSubmit" class="space-y-4">
+      <input v-model="localBook.title" placeholder="Title" class="input" required/>
+      <input v-model="localBook.author" placeholder="Author" class="input" required/>
+      <input v-model="localBook.genre" placeholder="Genre" class="input" />
+      <select v-model="localBook.status" class="input">
+        <option>To Read</option>
+        <option>Reading</option>
+        <option>Read</option>
+      </select>
 
+      <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">{{ localBook.id ? 'Update' : 'Create' }} Book</button>
+    </form>
+  </div>
 </template>
 
 <style scoped>
