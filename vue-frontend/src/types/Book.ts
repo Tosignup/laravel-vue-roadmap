@@ -4,7 +4,7 @@ export interface Book {
   author: string;
   genre?: string;
   status: "To Read" | "Reading" | "Read";
-  cover_image?: string;
+  cover_image?: File | string;
   created_at?: string;
 }
 

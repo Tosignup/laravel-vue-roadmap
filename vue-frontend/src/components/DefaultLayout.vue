@@ -9,7 +9,6 @@ import router from '@/router';
 const auth = useAuthStore();
 const userStore = useAuthStore();
 const user = userStore.user;
-console.log(user.name);
 
 function logout(){
   auth.logout();
@@ -27,7 +26,9 @@ const navigation = [
         <div class="flex h-16 items-center justify-between">
           <div class="flex items-center">
             <div class="shrink-0">
+              <RouterLink to="/books">
               <img class="size-8" src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=500" alt="Your Company" />
+              </RouterLink>
             </div>
             <div class="hidden md:block">
               <div class="ml-10 flex items-baseline space-x-4">

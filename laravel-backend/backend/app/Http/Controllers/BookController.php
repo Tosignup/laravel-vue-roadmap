@@ -37,6 +37,24 @@ class BookController extends Controller
     /**
      * Store a newly created resource in storage.
      */
+    // public function store(Request $request)
+    // {
+    //     try {
+    //         $validated = $request->validate([
+    //             'title' => 'required|max:255',
+    //             'author' => 'required|max:255',
+    //             'genre' => 'nullable|max:255',
+    //         ]);
+
+    //         $book = Book::create($validated);
+
+    //         // return response()->json(['message' => 'Book stored!'], 201);
+    //         return new BookResource($book);
+    //     } catch (\Exception $e) {
+    //         Log::error('Error storing book: ', [$e->getMessage()]);
+    //     }
+    // }
+
     public function store(Request $request)
     {
         try {
@@ -44,9 +62,21 @@ class BookController extends Controller
                 'title' => 'required|max:255',
                 'author' => 'required|max:255',
                 'genre' => 'nullable|max:255',
+                'cover_image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
             ]);
 
-            $book = Book::create($validated);
+            // $book = new Book($validated);
+
+            if ($request->hasFile('cover_image')) {
+                $path = $request->file('cover_image')->store('cover_images', 'public');
+            }
+            Log::info($path);
+            $book = Book::create([
+                'title' => $validated['title'],
+                'author' => $validated['author'],
+                'genre' => $validated['genre'],
+                'cover_image' => $path,
+            ]);
 
             // return response()->json(['message' => 'Book stored!'], 201);
             return new BookResource($book);
