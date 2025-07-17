@@ -43,7 +43,7 @@ onMounted(() => {
             <!-- <pre> {{ book }}</pre> -->
               <div class="flex gap-3 bg-white border border-gray-300 rounded-xl overflow-hidden items-center justify-between">
                   <div class="relative w-32 h-32 flex-shrink-0">
-                      <img v-if="book.cover_image" class="absolute left-0 top-0 w-full h-full object-cover object-center transition duration-50" :src="book.cover_image">
+                      <!-- <img v-if="book.cover_image" class="absolute left-0 top-0 w-full h-full object-cover object-center transition duration-50" :src="book.cover_image"> -->
                   </div>
                   <div class="flex justify-start flex-col gap-2 py-2">
                     <span> {{ book.cover_image }}</span>
