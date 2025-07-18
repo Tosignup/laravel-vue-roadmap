@@ -10,23 +10,29 @@ export const useBookStore = defineStore('book', () => {
 
   const fetchBooks = async (search = '', page = 1) => {
     loading.value = true;
+    // await new Promise(resolve => setTimeout(resolve, 1000));
     const res = await api.get('/api/books', {
       params: { search, page},
     });
-    // console.log(res.data);
     books.value = res.data.data;
     meta.value = res.data.meta;
     loading.value = false;
   };
 
-  const addBook = async (book: Book) => {
-    await api.post('/api/books', book);
+    const createBook = async (formData: FormData) => {
+
+      await api.post('/api/books', formData);
     await fetchBooks();
   }
 
-  const updateBook = async (id: number, book: Book) => {
-      await api.put(`/api/books/${id}`, book);
-    await fetchBooks();
+  const updateBook = async (id: number, formData: FormData) => {
+      loading.value = true;
+      const res = await api.post(`/api/books/${id}`, formData, {
+        headers: { 'Content-Type': 'multipart/form-data' },
+        params: { _method: 'PUT'},
+       });
+      loading.value = false;
+      return res.data
   }
 
   const deleteBook = async (id: number) => {
@@ -34,6 +40,6 @@ export const useBookStore = defineStore('book', () => {
     await fetchBooks();
   }
 
-  return { books, meta, loading, fetchBooks, addBook, updateBook, deleteBook };
+  return { books, meta, loading, fetchBooks, createBook, updateBook, deleteBook };
 
 })

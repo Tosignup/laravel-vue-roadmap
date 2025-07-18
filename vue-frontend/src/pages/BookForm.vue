@@ -3,6 +3,7 @@ import { computed, ref, watch } from 'vue';
 import type { Book } from '@/types/Book';
 import { useBooks } from '@/composables/useBooks';
 import { useRouter } from 'vue-router';
+import { useBookStore } from '@/stores/bookStore';
 
 const props = defineProps<{
   modelValue: Book;
@@ -13,10 +14,16 @@ const emit = defineEmits<{
 }>();
 
 const localBook = ref<Book>({ ...props.modelValue });
+watch(() => props.modelValue, (newVal) => {
+  if(newVal){
+    Object.assign(localBook.value, newVal);
+  }
+}, { immediate: true});
 const {createBook, updateBook, loading} = useBooks();
 const router = useRouter();
 
-watch( localBook, (val) => emit('update:modelValue', val), {deep: true});
+const bookStore = useBookStore();
+watch( localBook, (val) => emit('update:modelValue', val), { deep: true });
 
 const handleCoverChange = (e: Event) => {
   const target = e.target as HTMLInputElement;
@@ -54,11 +61,11 @@ const handleSubmit = async() => {
       formData.append(key, val);
     }
    });
-
+    console.log('Updating book with ID:', localBook.value.id);
    if(localBook.value.id) {
-    await updateBook(localBook.value.id, formData);
+    await bookStore.updateBook(localBook.value.id, formData);
    } else {
-    await createBook(formData);
+    await bookStore.createBook(formData);
    }
    router.push('/books');
   } catch (err: any) {
@@ -74,8 +81,8 @@ const handleSubmit = async() => {
   <div class="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
 
     <form @submit.prevent="handleSubmit" class="space-y-4">
-      <input v-model="localBook.title" placeholder="Title" class="input" required/>
-      <input v-model="localBook.author" placeholder="Author" class="input" required/>
+      <input v-model="localBook.title" placeholder="Title" class="input"/>
+      <input v-model="localBook.author" placeholder="Author" class="input"/>
       <input v-model="localBook.genre" placeholder="Genre" class="input" />
       <select v-model="localBook.status" class="input">
         <option>To Read</option>
