@@ -20,7 +20,6 @@ class BookController extends Controller
             $query->where('title', 'like', "%{$search}%")
                 ->orWhere('author', 'like', "%{$search}%");
         }
-        Log::info("Searching for: " . $search);
         $books = $query->paginate(2);
 
         // return response()->json($books);
@@ -65,12 +64,12 @@ class BookController extends Controller
                 'cover_image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
             ]);
 
-            // $book = new Book($validated);
+            $path = ($request->hasFile('cover_image')) ?
+                $path = $request->file('cover_image')->store('cover_images', 'public')
+                :
+                $path = null;
 
-            if ($request->hasFile('cover_image')) {
-                $path = $request->file('cover_image')->store('cover_images', 'public');
-            }
-            Log::info($path);
+
             $book = Book::create([
                 'title' => $validated['title'],
                 'author' => $validated['author'],
@@ -111,12 +110,24 @@ class BookController extends Controller
                 'title' => 'required|max:255',
                 'author' => 'required|max:255',
                 'genre' => 'nullable|max:255',
+                'cover_image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
             ]);
 
-            $book->update($validated);
+            $path = ($request->hasFile('cover_image')) ?
+                $path = $request->file('cover_image')->store('cover_images', 'public')
+                :
+                $path = null;
+            Log::info($validated);
+
+
+            $book->update([
+                'title' => $validated['title'],
+                'author' => $validated['author'],
+                'genre' => $validated['genre'],
+                'cover_image' => $path,
+            ]);
 
             return new BookResource($book);
-            // return response()->json(['message' => 'Book updated!'], 201);
         } catch (\Exception $e) {
             Log::error('Error updating book: ', [$e->getMessage()]);
         }
