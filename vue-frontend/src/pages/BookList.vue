@@ -16,13 +16,12 @@ watch(search, () => {
   bookStore.fetchBooks(search.value);
 });
 
-function logout(){
-  auth.logout();
-  router.push('/login');
-}
-function prev() {
+const getCoverUrl = (cover: unknown): string | undefined => {
+  if (typeof cover === 'string') {
+    return `/storage/${cover}`
+  }
 
-  console.log(bookStore.meta.current_page - 1);
+  return undefined;
 }
 
 onMounted(() => {
@@ -40,12 +39,14 @@ onMounted(() => {
     <main>
       <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
         <input v-model="searchInput" placeholder="Search title or author"/>
-          <div v-for="book in bookStore.books" :key="book.id" class="max-w-md my-2" >
+        <div v-for="book in bookStore.books" :key="book.id" class="max-w-md my-2" >
+            <!-- <pre> {{ book }}</pre> -->
               <div class="flex gap-3 bg-white border border-gray-300 rounded-xl overflow-hidden items-center justify-between">
                   <div class="relative w-32 h-32 flex-shrink-0">
-                      <img class="absolute left-0 top-0 w-full h-full object-cover object-center transition duration-50" loading="lazy" src="">
+                      <!-- <img v-if="book.cover_image" class="absolute left-0 top-0 w-full h-full object-cover object-center transition duration-50" :src="book.cover_image"> -->
                   </div>
                   <div class="flex justify-start flex-col gap-2 py-2">
+                    <span> {{ book.cover_image }}</span>
                       <p class="text-xl font-bold">{{ book.title }}</p>
                       <span class="text-gray-500">
                           {{ book.author }}

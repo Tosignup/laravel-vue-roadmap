@@ -13,7 +13,7 @@ export const useBookStore = defineStore('book', () => {
     const res = await api.get('/api/books', {
       params: { search, page},
     });
-    console.log(res.data);
+    // console.log(res.data);
     books.value = res.data.data;
     meta.value = res.data.meta;
     loading.value = false;

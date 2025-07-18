@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, watch } from 'vue';
+import { computed, ref, watch } from 'vue';
 import type { Book } from '@/types/Book';
 import { useBooks } from '@/composables/useBooks';
 import { useRouter } from 'vue-router';
@@ -18,14 +18,49 @@ const router = useRouter();
 
 watch( localBook, (val) => emit('update:modelValue', val), {deep: true});
 
+const handleCoverChange = (e: Event) => {
+  const target = e.target as HTMLInputElement;
+  const file = target.files?.[0];
+
+  if(file) localBook.value.cover_image = file;
+};
+
+const previewUrl = computed((): string | undefined => {
+  if (typeof localBook.value.cover_image === 'string') {
+    return `/storage/${localBook.value.cover_image}`;
+  }
+  if (localBook.value.cover_image instanceof File) {
+    return URL.createObjectURL(localBook.value.cover_image);
+  }
+
+  return undefined;
+});
+
+watch(() => localBook.value.cover_image, (newFile, _, onCleanup) => {
+  if(newFile instanceof File) {
+    const url = URL.createObjectURL(newFile);
+    onCleanup(() => URL.revokeObjectURL(url));
+  }
+});
+
 const handleSubmit = async() => {
   try {
-    if (localBook.value.id) {
-      await updateBook(localBook.value.id, localBook.value);
-    } else {
-      await createBook(localBook.value);
+    const formData = new FormData();
+
+   Object.entries(localBook.value).forEach(([key, val]) => {
+    if (key === 'cover_image' && val instanceof File){
+      formData.append('cover_image', val);
+    } else if (typeof val === 'string') {
+      formData.append(key, val);
     }
-    router.push('/books');
+   });
+
+   if(localBook.value.id) {
+    await updateBook(localBook.value.id, formData);
+   } else {
+    await createBook(formData);
+   }
+   router.push('/books');
   } catch (err: any) {
     if (err.response?.status === 422){
     console.error('Validation error: ', err.response.data.errors);
@@ -48,6 +83,10 @@ const handleSubmit = async() => {
         <option>Read</option>
       </select>
 
+      <input type="file" accept="image/*" @change="handleCoverChange" class="input" />
+      <div v-if="previewUrl">
+        <img :src="previewUrl" alt="Preview" class="w-32 h-32 object-cover rounded shadow" />
+      </div>
       <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">{{ localBook.id ? 'Update' : 'Create' }} Book</button>
     </form>
   </div>

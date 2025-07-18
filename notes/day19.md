@@ -2,31 +2,31 @@
 
 ## ✅ What I Did
 
-- Short summary of tasks completed
-- Key files changed or created
+- Added file uploading
+- In Laravel: it should validate if image is correct format
+- In Vue: added file uploading logic and template
 
 ## 🧩 Commands Used
 
-- `php artisan make:controller`
-- `npm install axios`
-- Example curl request to test API
+- `php artisan storage:link`
+- `php artisan serve`
+- `npm run dev`
 
 ## 📝 Key Learnings
 
-- What did you learn about Vue + TS + API calls?
-- Any syntax that was new or tricky?
+- File uploading in both backend and frontend
 
 ## ⚡️ Gotchas / Debugging
 
-- Problems you hit and how you fixed them
-- Error messages you don’t want to forget
+- Image displaying, I forgot to include cover_image in BookResource.
 
 ## 📚 Resources / Links
 
-- Docs you checked
-- Official Laravel or Vue docs used
+- Always read documentations
+- [laravel](https://laravel.com/docs/12.x)
+- [vue](https://vuejs.org/guide/introduction.html)
 
 ## 🧪 Next Steps / To Do
 
-- What needs improvement?
-- What do you want to revise tomorrow?
+- Fix image displaying
+- Proceed UX Improvements or should I say overall improvement

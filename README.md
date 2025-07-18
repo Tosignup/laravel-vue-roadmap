@@ -24,7 +24,7 @@ This repository tracks my learning progress in Laravel + Vue.js fullstack develo
 | Day 16 | Vue Router + Guards              | [x]       |
 | Day 17 | Tailwind CSS                     | [x]       |
 | Day 18 | Filters & Pagination             | [x]       |
-| Day 19 | File Upload + Type Safety        | [ ]       |
+| Day 19 | File Upload + Type Safety        | [x]       |
 | Day 20 | UX Polish                        | [ ]       |
 | Day 21 | Deployment                       | [ ]       |
 

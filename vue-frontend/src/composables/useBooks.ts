@@ -11,9 +11,9 @@ export function useBooks() {
     books.value = res.data.data;
   };
 
-  const createBook = async (book: Book) => {
+  const createBook = async (formData: FormData) => {
 
-      await api.post('/api/books', book);
+      await api.post('/api/books', formData);
     await fetchBooks();
   }
 
@@ -21,11 +21,14 @@ export function useBooks() {
     await api.get<BookResponse>(`/api/books/${id}`);
   }
 
-  const updateBook = async (id: number, book: Book) => {
+  const updateBook = async (id: number, formData: FormData) => {
     loading.value = true;
-     await api.put(`/api/books/${id}`, book);
-    await fetchBooks();
+    const res = await api.put(`/api/books/${id}?_method=PUT`, formData, {
+      headers: { 'Content-Type': 'multipart/form-data' },
+     });
+    // await fetchBooks();
     loading.value = false;
+    return res.data
   }
 
   const deleteBook = async (id: number) => {
